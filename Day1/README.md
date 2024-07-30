@@ -171,3 +171,9 @@ docker ps
 curl http://localhost:8001
 curl http://localhost:8002
 ```
+
+Expected output
+![image](https://github.com/user-attachments/assets/8d84e4cf-fe9e-4883-911d-0c2e4f8f7aed)
+![image](https://github.com/user-attachments/assets/c3862f2c-caeb-48b9-ae1b-9aabc44fc561)
+![image](https://github.com/user-attachments/assets/19e8dae1-f0a0-4e7d-8574-efeff89ca663)
+
