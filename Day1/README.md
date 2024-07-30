@@ -1,27 +1,126 @@
 # Day 1
 
-## Hypervisor Overview
+## Info - What is dual/multi booting?
 <pre>
-- is nothing but virtualization technology
-- helps us run multiple OS in the same laptop/desktop/workstation/servers
-- many OS can be active at the same time
-- each OS that runs on top of virtualization software is called Guest OS
-- the OS on which the virtualization software is installed is called Host OS
-- each Virtual Machine(VM) represents one fully functional OS
-- each VM requires dedicated hardwares resources
-  - CPU
-  - RAM
-  - Hard Disk (storage)
-- hence virualization is referred as heavy-weight
+- assume in your laptop you have installed Windows 11 OS as your primary operating sytem
+- for some R&D purpose, you need let's say Ubuntu 24.04 64-bit OS
+- either you can remove the Windows 11 and install Ubuntu 24.04 or you can retain the Windows 11 OS
+- you can install Boot Loader system utility like
+- Boot loader is a tiny system utility which has to fit within 512 bytes
+- In Hard Disk, the Sector 0 and Byte 0 is referred as Master Boot Record
+- The Boot loader system utility is installed in the Master Boot Record
+  1. LILO (Linux Loader)
+  2. GRUB 2 ( Boot Loader software that get's installed in Master Boot Record(MBR) )
+  3. For Mac Book Pro, BootCamp is a commercial Boot loader that works in Macbooks
+- Whenever we boot our machine, once the Power On Self Test (BIOS POST ) completes, the BIOS will instruct the CPU to load and execute the Boot loader from MBR
+- Once the CPU starts executing the Boot loader utility, it will scan the hard disk looking for installed Operating Systems
+- In case the boot loader finds more than 1 OS, then it gives a menu for you to choose which OS you wish to boot into
+- Only one OS can be active at point of time
+- In case you have booted into Windows, if you wish to work in Ubuntu then you need to first shutdown Windows, then boot into Ubuntu
 </pre>
 
-## Containerization Overview
+## Info - Hypervisor Overview
 <pre>
-- an application virtualization technology
-- each container represents one application/application process
-- each container get its own Private IP address
-- each container get its own virtual network card and network stack (7 OSI Layers)
-- all containers running on the same machine shares the underlying hardware resources
-- all containers running on the same machine shares the OS Kernel
-- containers are not Operating System
+- heavy weight virtualization technology
+  - each vitual machine has to be allocated with dedicated Hardware resources
+    - CPU Cores
+    - RAM
+    - Disk
+- hypervisor is nothing but virtualization technology
+- this came around year 2000
+- unlike the boot loader, more than one Operating System can be active at the same time
+- this was considered a IT revolution
+- It comes in 2 flavours
+  1. Type 1 - Bare Metal Hypervisor - Used in Server/Workstations
+  2. Type 2 - Used in Laptop/Desktops/Workstations
+- Type 1
+  - is called Bare Metal because to run the OS within Virtual Machine, you don't need to install any Host OS
+  Examples
+  - VMWare vSphere/vCenter
+- Type 2
+  - Oracle virtualbox - Free and supported in Windows, Linux and Mac 
+  - KVM - Opensource, supports all Linux distributions
+  - Parallel - supported in Mac
+  - VMWare (Paid software)
+    - Wokstation - Supports Linux & Mac
+    - Fusion - supported in Mac  
+- main advantage of Virtualization over Dual/Multi booting is, more than OS can be actively running in the same laptop/desktop/workstation/server
+- helps in consolidating many server into 1 (few physical servers)
+- technically possible to host 1000 os Virtual Machines within a single Physical Server
+- Server Motherboards with 8 Socket
+- If you install MCM(Multi chip Module - many processors can be fitted in a single socket)
+- each Virtual Machine represents 1 fully function Operating System
+- Viratual Machine(VM) is also called as Guest OS
+- Each Processor supports 
+  - 128 CPU Cores
+  - 256 CPU Cores
+  - 512 CPU Cores
+- Total Physical CPU Cores, on a 8 Socket Motherboard with MCM(1 IC contains 4 Processor, each Processor support 256 Cores)
+  8 x 4 x 256 = 8192 Physical Cores
+- Hyperthreading
+  - each Physical CPU Cores supports 2 logical/virtual cores 
+  - Total virtual cpu cores = 8192 x 2 = 16384
+</pre>
+
+## Info - Containerization version
+<pre>
+- light-weight application virtualization technology
+  - because containers don't get their own dedicated hardware resource
+  - containers running in the same host machines, they all share the hardware resources available on the Host OS
+- each container represents one application or one application component ( Message Queue or DB Server, App Server )
+- containers runs on top of an OS/VM
+- containers will never replace Operating System
+- containers don't have their own OS Kernel
+- containers doens't represent an Operating System
+- similarities between OS and containers
+  - containers also get their own Network Card
+  - containers get their own IP Address
+  - containers get their own file system
+  - containers also has their own network stack ( 7 OSI Layers )
+</pre>
+
+## Info - What is Container Runtime?
+<pre>
+- is a low-level software to manage container images and containers
+- it is not so user-friendly to manage containers directly using container runtime softwares
+- hence, end-users like us normally won't use container runtimes
+- Examples
+  - runC is a container runtime
+  - CRI-O Container Runtime
+</pre>
+
+## Info - What is Container Engine?
+<pre>
+- a high-level user-friendly software that helps us manage container images and containers
+- end-users doen't have to have low-level kernel knowledge to manage container images and containers when they work in container engines
+- container engines internally they depend on Container runtimes to manage images and containers
+- Example
+  - Docker is a Container Engine, internally it depends on containerd which in turn depends on runC container runtime
+  - Podman is a Container Engine, internally it depends on CRI-O container runtime
+</pre>
+
+## Info - Container Orchestration Platform Overview
+<pre>
+- Container Orchestration Platform
+  - helps us in making our application high available (HA)
+  - they support scaling up/down our containerized application workloads based on user-traffic
+  - rolling update - is a way you can upgrade your containerized application from one version to other without any downtime
+  - roll back - revert back to older version in case any defects are identified in the latest version of your application 
+  - also provides in-built monitoring
+    - it check whether application is running or crashed, in case you appilcation aborted/crashed it will be restarted, replaced with another health instance of your application
+    - health check of your application
+    - readiness check of your application
+    - repairs your application when found to be functional as expected
+  - supports exposing your containerized application either within the cluster or for external access via Services
+  - supports ingress forwarding rules to integrate multiple containerized applications from a main public url 
+  - running statefull and stateful application
+- Examples
+  1. Docker SWARM
+  2. Google Kubernetes
+  3. OKD - opensource variant of Red Hat Openshift
+  4. Red Hat Openshift
+  5. AWS - EKS (Elastic Kubernetes Service - Managed K8s cluster )
+  6. AWS - ROSA ( Red Hat Openshift as a managed Service )
+  7. Azure - AKS ( Azure Kubernetes managed Service )
+  8. Azure - ARO ( Azure Red Hat Openshift managed Service )
 </pre>
