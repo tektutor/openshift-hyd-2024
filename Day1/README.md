@@ -115,6 +115,16 @@ docker --version
 docker images
 ```
 
+## Lab - Inspecting docker image to get more details about the image
+```
+docker images
+docker image inspect ubuntu:latest
+```
+
+Expected output
+![image](https://github.com/user-attachments/assets/16e27a7d-72c6-4fce-8ca4-4094af7e2de3)
+
+
 ## Info - Container Orchestration Platform Overview
 <pre>
 - Container Orchestration Platform
