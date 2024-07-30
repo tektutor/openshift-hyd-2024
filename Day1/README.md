@@ -123,6 +123,7 @@ docker image inspect ubuntu:latest
 
 Expected output
 ![image](https://github.com/user-attachments/assets/16e27a7d-72c6-4fce-8ca4-4094af7e2de3)
+![image](https://github.com/user-attachments/assets/7fe23fd7-0d12-41e4-a3cf-e4547da60695)
 
 
 ## Info - Container Orchestration Platform Overview
