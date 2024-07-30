@@ -9,12 +9,12 @@ https://labs.dmrtechcloud.com
 
 <pre>
 username - user[xyz]
-password - Admin@123
+password - pass@123
 </pre>  
 
 ## Openshift login details
 
-#### Server 1
+#### Remote Desktop Server 1
 <pre>
 IPAddress: 192.168.1.11
 username : user01-user10
