@@ -102,6 +102,19 @@
 ## Info - Docker High-Level Architecture
 ![docker](DockerHighLevelArchitecture.png)
 
+## Demo - Installing Docker CE in RHEL 9.x
+```
+sudo yum install -y yum-utils
+sudo yum-config-manager --add-repo https://download.docker.com/linux/rhel/docker-ce.repo
+sudo yum install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo usermod -aG $USER docker
+sudo systemctl enable docker
+sudo systemctl start docker
+sudo systemctl status docker
+docker --version
+docker images
+```
+
 ## Info - Container Orchestration Platform Overview
 <pre>
 - Container Orchestration Platform
