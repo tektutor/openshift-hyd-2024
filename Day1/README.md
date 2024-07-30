@@ -125,4 +125,13 @@ Expected output
 ![image](https://github.com/user-attachments/assets/16e27a7d-72c6-4fce-8ca4-4094af7e2de3)
 ![image](https://github.com/user-attachments/assets/7fe23fd7-0d12-41e4-a3cf-e4547da60695)
 
+## Lab - Creating containers in background/deattached mode
+```
+docker run -dit --name ubuntu1 --hostname ubuntu1 ubuntu:latest /bin/bash
+docker run -dit --name ubuntu2 --hostname ubuntu2 ubuntu:latest /bin/bash
+```
 
+Listing all running containers
+```
+docker ps
+```
