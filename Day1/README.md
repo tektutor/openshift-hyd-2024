@@ -135,3 +135,15 @@ Listing all running containers
 ```
 docker ps
 ```
+
+## Lab - Listing all containers irrespective their running status
+```
+docker ps -a
+```
+
+
+## Lab - Creating a nginx web server container
+```
+docker run -d --name nginx1 --hostname nginx1 nginx:latest
+docker ps
+```
