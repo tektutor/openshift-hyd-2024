@@ -8,7 +8,7 @@ https://labs.dmrtechcloud.com
 #### Login credentials
 
 <pre>
-username - user<xyz>
+username - user[xyz]
 password - Admin@123
 </pre>  
 
