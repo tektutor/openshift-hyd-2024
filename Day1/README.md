@@ -185,3 +185,42 @@ docker rm -f $(docker ps -aq)
 Expected output
 ![image](https://github.com/user-attachments/assets/a9999b8f-edf7-4cf2-9ca5-93d9e0a5d3b1)
 
+
+## Lab - Deploying a load balancer with multiple web servers behind the load balancer using containers
+
+Let's create 3 web server containers using nginx:latest docker image from Docker Hub website
+```
+docker run -d --name web1 --hostname web1 nginx:latest
+docker run -d --name web2 --hostname web2 nginx:latest
+docker run -d --name web3 --hostname web3 nginx:latest
+docker ps
+```
+Expected output
+![image](https://github.com/user-attachments/assets/583fd0d1-56a8-4b98-a50e-a7b4a1e1025b)
+
+
+Let's create a load balancer container using nginx:latest
+```
+docker run -d --name lb --hostname lb -p 80:80 nginx:latest
+docker ps
+```
+
+Let's copy the nginx.conf file from lb container to local machine
+```
+docker cp lb:/etc/nginx/nginx.conf .
+```
+
+Edit the nginx.conf file and update the IP addresses of your web1, web2 and web3 container IP
+```
+docker inspect -f {{.NetworkSettings.IPAddress}} web1
+docker inspect -f {{.NetworkSettings.IPAddress}} web2
+docker inspect -f {{.NetworkSettings.IPAddress}} web3
+cat nginx.conf
+```
+Expected output
+![Uploading image.png…]()
+
+
+We need to configure the lb container to work like a Load Balancer as nginx works as a web server by default
+```
+```
