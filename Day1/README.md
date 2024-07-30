@@ -147,3 +147,5 @@ docker ps -a
 docker run -d --name nginx1 --hostname nginx1 nginx:latest
 docker ps
 ```
+Expected output
+![image](https://github.com/user-attachments/assets/cced41bb-f97f-41e3-985b-a39f9758e3c8)
