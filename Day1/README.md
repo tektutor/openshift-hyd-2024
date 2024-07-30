@@ -223,4 +223,36 @@ Expected output
 
 We need to configure the lb container to work like a Load Balancer as nginx works as a web server by default
 ```
+cat nginx.conf
+docker cp nginx.conf lb:/etc/nginx/nginx.conf
+docker restart lb
+docker ps
 ```
+
+Let's customize the web page on web1, web2 and web3 containers
+```
+echo "Server 1" > index.html
+docker cp index.html web1:/usr/share/nginx/html/index.html
+
+echo "Server 2" > index.html
+docker cp index.html web2:/usr/share/nginx/html/index.html
+
+echo "Server 3" > index.html
+docker cp index.html web3:/usr/share/nginx/html/index.html
+```
+
+Testing the custom web page
+```
+curl http://172.17.0.2:80
+curl http://172.17.0.3:80
+curl http://172.17.0.4:80
+```
+
+Testing the load balancer
+```
+curl http://localhost:80
+```
+
+Expected output
+![image](https://github.com/user-attachments/assets/70b9b3ca-b628-4667-bd98-b9af2aa401ad)
+![image](https://github.com/user-attachments/assets/10ee8695-1541-4bdc-8794-819e4d45f4bc)
