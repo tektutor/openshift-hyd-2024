@@ -62,7 +62,7 @@
   - Total virtual cpu cores = 8192 x 2 = 16384
 </pre>
 
-## Info - Containerization version
+## Info - Containerization
 <pre>
 - light-weight application virtualization technology
   - because containers don't get their own dedicated hardware resource
