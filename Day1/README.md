@@ -177,3 +177,11 @@ Expected output
 ![image](https://github.com/user-attachments/assets/c3862f2c-caeb-48b9-ae1b-9aabc44fc561)
 ![image](https://github.com/user-attachments/assets/19e8dae1-f0a0-4e7d-8574-efeff89ca663)
 
+## Lab - Deleting all the containers with a single command without calling out their names
+```
+docker rm -f $(docker ps -aq)
+```
+
+Expected output
+![image](https://github.com/user-attachments/assets/a9999b8f-edf7-4cf2-9ca5-93d9e0a5d3b1)
+
