@@ -149,3 +149,16 @@ docker ps
 ```
 Expected output
 ![image](https://github.com/user-attachments/assets/cced41bb-f97f-41e3-985b-a39f9758e3c8)
+
+## Lab - Deleting a running container
+```
+docker ps
+docker rm nginx1
+docker stop nginx1
+docker rm nginx1
+docker ps
+docker ps -a
+```
+
+Expected output
+![image](https://github.com/user-attachments/assets/59690ab5-0197-4200-bf81-2d9ddfc5a624)
