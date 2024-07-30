@@ -99,6 +99,9 @@
   - Podman is a Container Engine, internally it depends on CRI-O container runtime
 </pre>
 
+## Info - Docker High-Level Architecture
+![docker](DockerHighLevelArchitecture.png)
+
 ## Info - Container Orchestration Platform Overview
 <pre>
 - Container Orchestration Platform
