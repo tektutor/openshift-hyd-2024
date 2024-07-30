@@ -218,7 +218,7 @@ docker inspect -f {{.NetworkSettings.IPAddress}} web3
 cat nginx.conf
 ```
 Expected output
-![Uploading image.png…]()
+![image](https://github.com/user-attachments/assets/2c91c7c0-9603-49fc-b6a3-3284ac7c1789)
 
 
 We need to configure the lb container to work like a Load Balancer as nginx works as a web server by default
