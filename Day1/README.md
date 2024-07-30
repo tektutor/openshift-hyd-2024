@@ -162,3 +162,12 @@ docker ps -a
 
 Expected output
 ![image](https://github.com/user-attachments/assets/59690ab5-0197-4200-bf81-2d9ddfc5a624)
+
+## Lab - Port forwarding to expose your containerized application service to outside world
+```
+docker run -d --name nginx1 --hostname nginx1 -p 8001:80 nginx:latest
+docker run -d --name nginx2 --hostname nginx2 -p 8002:80 nginx:latest
+docker ps
+curl http://localhost:8001
+curl http://localhost:8002
+```
