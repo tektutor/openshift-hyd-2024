@@ -41,3 +41,12 @@ oc get nodes -o wide
 
 Expected output
 ![image](https://github.com/user-attachments/assets/80acc6b4-c6f7-4c03-a91f-dcf13fcb2b10)
+
+## Lab - Finding more details about a node
+```
+oc get nodes
+oc describe node/master-0
+```
+
+Expected output
+![image](https://github.com/user-attachments/assets/fec2e43c-5862-482e-8107-a1b47ef72a73)
