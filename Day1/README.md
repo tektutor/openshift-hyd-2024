@@ -364,6 +364,32 @@ Expected output
 ![image](https://github.com/user-attachments/assets/5fc62726-7a37-429a-8c56-270082a52cfe)
 
 
+Now delete the existing mysql container
+```
+docker rm -f mysql
+```
+
+Recreate a new container mounting the same local machine path
+```
+docker run -d --name mysql --hostname mysql -e MYSQL_ROOT_PASSWORD=root@123 -v /home/jegan/mysql:/var/lib/mysql mysql:latest
+docker ps
+docker exec -it mysql /bin/sh
+
+mysql -u root -p
+SHOW DATABASES;
+USE tektutor;
+SHOW TABLES;
+SELECT * FROM training;
+
+exit
+exit
+```
+Expected output
+![image](https://github.com/user-attachments/assets/39fefb98-deb9-4cbb-977e-0fff65e8042c)
+![image](https://github.com/user-attachments/assets/a3686ac9-17de-4414-99b4-191978a16595)
+![image](https://github.com/user-attachments/assets/60d5dd81-4b1f-47d7-8a51-d87fe6d7bf4c)
+
+
 ## Lab - Building custom docker image
 ```
 cd ~/openshift-hyd-2024
