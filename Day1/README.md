@@ -357,6 +357,12 @@ exit
 exit
 ```
 
+Expected output
+![image](https://github.com/user-attachments/assets/5185d06b-62b8-4245-b5cd-01a2764e8764)
+![image](https://github.com/user-attachments/assets/70e2e8af-1fbb-4cd6-9aa5-b0d99f580359)
+![image](https://github.com/user-attachments/assets/fe3bb473-6f7e-4eab-bd48-1fa96c1e5ff2)
+![image](https://github.com/user-attachments/assets/5fc62726-7a37-429a-8c56-270082a52cfe)
+
 
 ## Lab - Building custom docker image
 ```
