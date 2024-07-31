@@ -59,3 +59,11 @@ oc new-project jegan
 
 Expected output
 ![image](https://github.com/user-attachments/assets/e3003158-e4d4-41c5-8d28-420a9b7ff73e)
+
+## Lab - Listing all the projects
+```
+oc get projects
+```
+
+Expected output
+![image](https://github.com/user-attachments/assets/842e26eb-6b81-4288-8b71-9ec2e87739c0)
