@@ -291,3 +291,20 @@ mkdir -p /home/user01/mysql
 docker run -d --name mysql --hostname mysql -v/home/user01/mysql:/var/lib/mysql mysql:latest
 docker ps
 ```
+
+## Lab - Building custom docker image
+```
+cd ~/openshift-hyd-2024
+git pull
+cd Day1/CustomDockerImage
+cat Dockerfile
+docker build -t tektutor/ubuntu:latest .
+docker images
+```
+
+Expected output
+![image](https://github.com/user-attachments/assets/88f7c900-03ba-4d36-83f8-5d37cb92e7db)
+![image](https://github.com/user-attachments/assets/285a01c7-e52f-4f82-8844-c796bc765169)
+![image](https://github.com/user-attachments/assets/c8ac6b6b-3ff8-47b8-8c62-dd287f1b8daf)
+![image](https://github.com/user-attachments/assets/4f847085-6802-41a8-a344-877d92ccbde6)
+![image](https://github.com/user-attachments/assets/4c904840-aab5-4807-b4ee-ecfc25ff52c1)
