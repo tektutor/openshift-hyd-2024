@@ -322,4 +322,4 @@ docker images
 
 Expected output
 ![image](https://github.com/user-attachments/assets/8adfeb55-893b-48e6-9a2a-c2fe7351bcac)
-![Uploading image.png…]()
+![image](https://github.com/user-attachments/assets/6f822e10-ba49-4d2a-a0f5-28802b1b8b0c)
