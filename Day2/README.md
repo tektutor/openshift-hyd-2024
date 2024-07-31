@@ -110,3 +110,13 @@ oc get rs
 
 Expected output
 ![image](https://github.com/user-attachments/assets/d9928bae-4e0e-4513-b1f7-b14db4a01b44)
+
+Listing the pods
+```
+oc get pods
+oc get pod
+oc get po
+```
+
+Expected output
+![image](https://github.com/user-attachments/assets/cd2aea9e-6461-4ad8-9ca3-88cd647b19dd)
