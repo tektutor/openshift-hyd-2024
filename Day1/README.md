@@ -284,6 +284,19 @@ docker rmi ubuntu:latest
 ```
 
 ## Lab - Creating a mysql container with external storage
+
+Creating a mysql db server container without external storage
+```
+docker run -d --name mysql --hostname mysql -e MYSQL_ROOT_PASSWORD=root@123 mysql:latest
+docker ps
+docker exec -it mysql sh
+mysql -u root -p 
+```
+
+Expected output
+![image](https://github.com/user-attachments/assets/3b146364-d806-4dca-847c-a0695de6e8af)
+
+
 Assuming you are logging in to the linux box as user01, you need to create a folder under your home directory.  You need to modify the username as per your linux username in the below commands.
 
 ```
