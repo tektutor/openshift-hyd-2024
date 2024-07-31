@@ -332,8 +332,31 @@ It is mandatory to supply MYSQL_ROOT_PASSWORD password environment variable whil
 docker rm -f mysql
 docker run -d --name mysql --hostname mysql -v/home/jegan/mysql:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=root@123 mysql:latest
 docker ps
+docker logs mysql
 ```
 Expected output
+![image](https://github.com/user-attachments/assets/2cde5b91-e00d-4c4b-b362-e17b16cccf57)
+![image](https://github.com/user-attachments/assets/2bbda409-ac77-448e-b31f-e5cecc04b639)
+
+Let's get inside container shell
+```
+docker exec -it mysql /bin/sh
+mysql -u root -p
+SHOW DATABASES;
+CREATE DATABASE tektutor;
+USE tektutor;
+SHOW TABLES;
+CREATE TABLE training ( id INT NOT NULL, name VARCHAR(250) NOT NULL, duration VARCHAR(250) NOT NULL, PRIMARY KEY(id) );
+DESCRIBE TABLE training;
+
+INSERT INTO training VALUES ( 1, "DevOps", "5 Days" );
+INSERT INTO training VALUES ( 2, "Developing Microservices with SpringBoot", "5 Days" );
+SELECT * FROM training;
+
+exit
+exit
+```
+
 
 ## Lab - Building custom docker image
 ```
