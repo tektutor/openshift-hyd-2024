@@ -256,3 +256,29 @@ curl http://localhost:80
 Expected output
 ![image](https://github.com/user-attachments/assets/70b9b3ca-b628-4667-bd98-b9af2aa401ad)
 ![image](https://github.com/user-attachments/assets/10ee8695-1541-4bdc-8794-819e4d45f4bc)
+
+## Lab - Getting inside a running container shell 
+```
+docker exec -it web1 /bin/bash
+```
+
+## Lab - Stopping a running container
+```
+docker stop web1
+```
+
+## Lab - Starting an exited container
+```
+docker start web1
+```
+
+## Lab - Finding IP address of a running container
+```
+docker inspect -f {{.NetworkSettings.IPAddress}} web1
+docker inspect web1 | grep IPA
+```
+
+## Lab - Deleting a docker image from your local docker registry
+```
+docker rmi ubuntu:latest
+```
