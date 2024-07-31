@@ -319,9 +319,21 @@ Assuming you are logging in to the linux box as user01, you need to create a fol
 
 ```
 mkdir -p /home/user01/mysql
-docker run -d --name mysql --hostname mysql -v/home/user01/mysql:/var/lib/mysql mysql:latest
+docker run -d --name mysql --hostname mysql -v/home/jegan/mysql:/var/lib/mysql mysql:latest
+docker ps
+docker logs mysql
+```
+Expected output
+![image](https://github.com/user-attachments/assets/ebf2014f-cc52-417f-98ac-3d8bf24045f9)
+
+
+It is mandatory to supply MYSQL_ROOT_PASSWORD password environment variable while creating mysql container.
+```
+docker rm -f mysql
+docker run -d --name mysql --hostname mysql -v/home/jegan/mysql:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=root@123 mysql:latest
 docker ps
 ```
+Expected output
 
 ## Lab - Building custom docker image
 ```
