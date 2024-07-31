@@ -25,3 +25,11 @@
   7. Azure - AKS ( Azure Kubernetes managed Service )
   8. Azure - ARO ( Azure Red Hat Openshift managed Service )
 </pre>
+
+## Lab - Listing the openshift nodes
+```
+oc get nodes
+```
+
+Expected output
+![image](https://github.com/user-attachments/assets/53a745f9-1dfa-4c0c-abb6-e83c7c6d2486)
