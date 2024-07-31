@@ -76,3 +76,10 @@ oc project jegan
 
 Expected output
 ![image](https://github.com/user-attachments/assets/d7901d3f-0bff-41a4-9e30-b30b551ac204)
+
+## Lab - Finding the currently active project
+```
+oc project
+```
+Expected output
+![image](https://github.com/user-attachments/assets/e880ed22-d182-40e2-bb93-8ed4998eb229)
