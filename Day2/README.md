@@ -99,3 +99,14 @@ oc get deploy
 
 Expected output
 ![image](https://github.com/user-attachments/assets/15ea43b4-fa3f-4e0b-82de-915321cfc2ad)
+
+
+Listing the replicasets
+```
+oc get replicasets
+oc get replicaset
+oc get rs
+```
+
+Expected output
+![image](https://github.com/user-attachments/assets/d9928bae-4e0e-4513-b1f7-b14db4a01b44)
