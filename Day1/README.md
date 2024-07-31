@@ -337,3 +337,14 @@ curl http://172.17.0.2:8080
 Expected output
 
 ![image](https://github.com/user-attachments/assets/5b13d935-1355-4de2-a776-886f2a9e7bcc)
+
+
+## Lab - Renaming a container
+```
+docker ps
+docker rename c1 my-container
+docker ps
+```
+
+Expected output
+![image](https://github.com/user-attachments/assets/bda78c15-2f22-44da-86e4-65a5f0f36928)
