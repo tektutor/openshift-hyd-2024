@@ -290,11 +290,28 @@ Creating a mysql db server container without external storage
 docker run -d --name mysql --hostname mysql -e MYSQL_ROOT_PASSWORD=root@123 mysql:latest
 docker ps
 docker exec -it mysql sh
-mysql -u root -p 
+mysql -u root -p
+SHOW DATABASES;
+CREATE DATABASE tektutor;
+USE tektutor;
+SHOW TABLES;
+CREATE TABLE training ( id INT NOT NULL, name VARCHAR(250) NOT NULL, duration VARCHAR(250) NOT NULL, PRIMARY KEY(id) );
+DESCRIBE TABLE training;
+
+INSERT INTO training VALUES ( 1, "DevOps", "5 Days" );
+INSERT INTO training VALUES ( 2, "Developing Microservices with SpringBoot", "5 Days" );
+SELECT * FROM training;
+
+exit
+exit
 ```
 
 Expected output
 ![image](https://github.com/user-attachments/assets/3b146364-d806-4dca-847c-a0695de6e8af)
+![image](https://github.com/user-attachments/assets/ea2a1946-3c2b-4f2e-8eda-5aef96b9c5d8)
+![image](https://github.com/user-attachments/assets/e3c1be3d-acf6-4323-af8b-1c4c1c255521)
+![image](https://github.com/user-attachments/assets/d7d403b2-4d61-4abb-802c-91443aff4ad5)
+
 
 
 Assuming you are logging in to the linux box as user01, you need to create a folder under your home directory.  You need to modify the username as per your linux username in the below commands.
