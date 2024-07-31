@@ -67,3 +67,12 @@ oc get projects
 
 Expected output
 ![image](https://github.com/user-attachments/assets/842e26eb-6b81-4288-8b71-9ec2e87739c0)
+
+## Lab - Switchning between projects
+```
+oc project aravind
+oc project jegan
+```
+
+Expected output
+![image](https://github.com/user-attachments/assets/d7901d3f-0bff-41a4-9e30-b30b551ac204)
