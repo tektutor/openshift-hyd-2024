@@ -308,3 +308,18 @@ Expected output
 ![image](https://github.com/user-attachments/assets/c8ac6b6b-3ff8-47b8-8c62-dd287f1b8daf)
 ![image](https://github.com/user-attachments/assets/4f847085-6802-41a8-a344-877d92ccbde6)
 ![image](https://github.com/user-attachments/assets/4c904840-aab5-4807-b4ee-ecfc25ff52c1)
+
+## Lab - Building a multi-stage docker image
+```
+cd ~/openshift-hyd-2024
+git pull
+cd Day1/spring-ms
+cat Dockerfile
+tree
+docker build -t tektutor/spring-ms:latest .
+docker images
+```
+
+Expected output
+![image](https://github.com/user-attachments/assets/8adfeb55-893b-48e6-9a2a-c2fe7351bcac)
+![Uploading image.png…]()
