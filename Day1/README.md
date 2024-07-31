@@ -325,3 +325,15 @@ Expected output
 ![image](https://github.com/user-attachments/assets/6f822e10-ba49-4d2a-a0f5-28802b1b8b0c)
 ![image](https://github.com/user-attachments/assets/3e7a6b8a-45ce-4ddf-9ca9-092278968c7a)
 ![image](https://github.com/user-attachments/assets/bd969633-5c65-4ec9-b4c6-e88cf3876a37)
+
+Creating a container with our custom docker image
+```
+docker rm -f c1
+docker run -d --name c1 --hostname c1 tektutor/spring-ms:latest
+docker ps
+docker inspect c1 | grep IPA
+curl http://172.17.0.2:8080
+```
+Expected output
+
+![image](https://github.com/user-attachments/assets/5b13d935-1355-4de2-a776-886f2a9e7bcc)
