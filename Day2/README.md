@@ -83,3 +83,19 @@ oc project
 ```
 Expected output
 ![image](https://github.com/user-attachments/assets/e880ed22-d182-40e2-bb93-8ed4998eb229)
+
+## Lab - Deploy your first application in imperative style
+```
+oc project
+oc create deployment nginx --image=nginx:latest --replicas=3
+```
+
+Listing the deployments
+```
+oc get deployments
+oc get deployment
+oc get deploy
+```
+
+Expected output
+![image](https://github.com/user-attachments/assets/15ea43b4-fa3f-4e0b-82de-915321cfc2ad)
