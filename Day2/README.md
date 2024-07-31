@@ -50,3 +50,4 @@ oc describe node/master-0
 
 Expected output
 ![image](https://github.com/user-attachments/assets/fec2e43c-5862-482e-8107-a1b47ef72a73)
+![image](https://github.com/user-attachments/assets/7cff122b-657b-44c9-b36a-02494a4c0afb)
