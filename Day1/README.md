@@ -282,3 +282,12 @@ docker inspect web1 | grep IPA
 ```
 docker rmi ubuntu:latest
 ```
+
+## Lab - Creating a mysql container with external storage
+Assuming you are logging in to the linux box as user01, you need to create a folder under your home directory.  You need to modify the username as per your linux username in the below commands.
+
+```
+mkdir -p /home/user01/mysql
+docker run -d --name mysql --hostname mysql -v/home/user01/mysql:/var/lib/mysql mysql:latest
+docker ps
+```
