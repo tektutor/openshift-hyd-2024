@@ -33,3 +33,11 @@ oc get nodes
 
 Expected output
 ![image](https://github.com/user-attachments/assets/53a745f9-1dfa-4c0c-abb6-e83c7c6d2486)
+
+## Lab - Finding the IP details of openshift nodes
+```
+oc get nodes -o wide
+```
+
+Expected output
+![image](https://github.com/user-attachments/assets/80acc6b4-c6f7-4c03-a91f-dcf13fcb2b10)
