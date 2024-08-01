@@ -40,3 +40,18 @@ curl http://localhost:8080
 
 Expected output
 ![image](https://github.com/user-attachments/assets/0e796c25-9f78-4893-b914-9dd7002ba57e)
+
+## Lab - Creating an internal clusterip service for nginx deployment
+```
+oc get deploy
+oc expose deploy/nginx --type=ClusterIP --port=8080
+oc get services
+oc get service
+oc get svc
+oc describe svc/nginx
+```
+
+Expected output
+![image](https://github.com/user-attachments/assets/996c7f6b-b511-4a1e-9ed7-a6cc6e83e084)
+![image](https://github.com/user-attachments/assets/3ac8b518-ed34-4cf3-a361-a254e335ae48)
+![image](https://github.com/user-attachments/assets/ef4c51e0-49fc-477e-8593-f136c3a6baf5)
