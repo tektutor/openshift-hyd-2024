@@ -224,3 +224,11 @@ Expected output
 ![image](https://github.com/user-attachments/assets/6e487777-2dd5-468d-86a8-475ada69fb28)
 ![image](https://github.com/user-attachments/assets/8648cdb2-23f0-4747-bda3-278e91130fee)
 
+Rollback to previous version of nginx
+```
+oc rollout undo deploy/nginx
+oc get po
+oc get pod/nginx-566b5879cb-7kjw5 -o yaml | grep image
+```
+![Uploading image.png…]()
+
