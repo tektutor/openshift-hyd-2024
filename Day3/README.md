@@ -8,6 +8,20 @@ oc create deployment nginx --image=bitnami/nginx:latest --replicas=3
 oc get deploy,rs,po
 ```
 
+## Lab - Scaling up nginx deployment
+```
+oc scale deploy/nginx --replicas=5
+oc get po -o wide -w
+```
+
+## Lab - Scaling down nginx deployment
+```
+oc scale deploy/nginx --replicas=3
+oc get po -o wide -w
+```
+
+
+
 ## Lab - Port forward a pod to access the web page served by nginx pods for testing purpose
 The port on the left side represents local machine port and the port on the right side represents the port used by the applicaiton container on the pod. The local machine port and container port can be different as well.
 
