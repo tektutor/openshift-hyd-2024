@@ -189,3 +189,46 @@ Expected output
 ![image](https://github.com/user-attachments/assets/ad391882-82ec-4d2b-a12c-8678f526fd9c)
 ![image](https://github.com/user-attachments/assets/d8e419a0-639a-42d7-835b-c447489546f8)
 ![image](https://github.com/user-attachments/assets/54680e53-56e6-4fdd-afa9-70226e71d821)
+
+## Lab - Declaratively perform rolling update
+```
+oc delete project/jegan
+oc new-project jegan
+
+cd ~/openshift-hyd-2024
+git pull
+cd Day3/declarative-manifest-scripts
+cat nginx-deploy.yml
+oc create -f nginx-deploy.yml --save-config
+oc get deploy,rs,po
+oc get pod/nginx-566b5879cb-bqxln -o yaml | grep image
+```
+
+Expected output
+![image](https://github.com/user-attachments/assets/657d2de8-138c-4ee6-8ef1-5c332d335ecd)
+![image](https://github.com/user-attachments/assets/20b28a22-3e58-4242-9e7f-66bce5d8d5fb)
+![image](https://github.com/user-attachments/assets/84475a42-10da-48d4-a8f1-c06814fc21e4)
+
+Let's upgrade the nginx from 1.18 to 1.19 image version
+```
+cat nginx-deploy.yml
+oc apply -f nginx-deploy.yml
+oc rollout status deploy/nginx
+oc rollout history deploy/nginx
+oc get po
+oc get pod/nginx-6b49c75d9-jrb79 -o yaml | grep image
+oc get rs
+```
+Expected output
+![image](https://github.com/user-attachments/assets/b4aefdbc-435b-4357-8180-699e1a6230f5)
+![image](https://github.com/user-attachments/assets/6e487777-2dd5-468d-86a8-475ada69fb28)
+![image](https://github.com/user-attachments/assets/8648cdb2-23f0-4747-bda3-278e91130fee)
+
+Rollback to previous version of nginx
+```
+oc rollout undo deploy/nginx
+oc get po
+oc get pod/nginx-566b5879cb-7kjw5 -o yaml | grep image
+```
+![Uploading image.png…]()
+
