@@ -97,3 +97,18 @@ oc describe svc/nginx
 
 Expected output
 ![image](https://github.com/user-attachments/assets/694b6ca1-c32e-4909-8867-cad92143a452)
+
+
+## Lab - Declarative create nginx deployment
+```
+oc delete project/jegan
+oc new-project jegan
+
+oc create deploy nginx --image=bitnami/nginx:latest --replicas=3 --dry-run=client -o yaml
+oc create deploy nginx --image=bitnami/nginx:latest --replicas=3 --dry-run=client -o yaml > nginx-deploy.yml
+oc create -f nginx-deploy.yml --save-config
+oc get deploy,rs,po
+```
+
+Expected output
+
