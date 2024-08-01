@@ -1,6 +1,7 @@
 # Day 3
 
 ## Lab - Deploying nginx using bitnami image
+In the below command, replace 'jegan' with your project name
 ```
 oc project jegan
 oc create deployment nginx --image=bitnami/nginx:latest --replicas=3
