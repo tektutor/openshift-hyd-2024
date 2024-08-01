@@ -171,3 +171,21 @@ oc describe svc/nginx
 Expected output
 ![image](https://github.com/user-attachments/assets/f91778cf-9346-4f9c-be14-6301c431aec0)
 ![image](https://github.com/user-attachments/assets/104d5146-adf8-4231-baa2-357a29bbeabb)
+
+
+## Lab - Declaratively creating a nodeport service
+```
+oc delete -f pod.yml
+oc create -f nginx-deploy.yml --save-config
+oc expose deploy/nginx --type=NodePort --port=8080 --dry-run=client -o yaml
+oc expose deploy/nginx --type=NodePort --port=8080 --dry-run=client -o yaml > nginx-nodeport-svc.yml
+oc delete -f nginx-cluserip-svc.yml
+oc create -f nginx-nodeport-svc.yml --save-config
+oc get svc
+oc describe svc/nginx
+```
+
+Expected output
+![image](https://github.com/user-attachments/assets/ad391882-82ec-4d2b-a12c-8678f526fd9c)
+![image](https://github.com/user-attachments/assets/d8e419a0-639a-42d7-835b-c447489546f8)
+![image](https://github.com/user-attachments/assets/54680e53-56e6-4fdd-afa9-70226e71d821)
