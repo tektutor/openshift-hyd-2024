@@ -140,3 +140,19 @@ oc get rs,po
 Expected output
 ![image](https://github.com/user-attachments/assets/b1e1e05c-ed23-435c-be49-2edfee6e4ba9)
 ![image](https://github.com/user-attachments/assets/09c19586-d012-4014-af1e-e3c0b9b12930)
+
+## Lab - Creating a pod in declarative style without replicaset and deployment
+```
+cd ~/openshift-hyd-2024
+git pull
+cd Day3/declarative-manifest-scripts
+cat pod.yml
+oc create -f pod.yml --save-config
+oc get po
+oc get po -w
+```
+
+Expected output
+![image](https://github.com/user-attachments/assets/e12f498d-b5fc-4071-92b5-8374340d0a6f)
+![image](https://github.com/user-attachments/assets/3d777a12-15ee-4aa5-9c9b-4350f1506492)
+![Uploading image.png…]()
