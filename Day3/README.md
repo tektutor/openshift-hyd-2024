@@ -138,3 +138,5 @@ oc create -f nginx-rs.yml --save-config
 oc get rs,po
 ```
 Expected output
+![image](https://github.com/user-attachments/assets/b1e1e05c-ed23-435c-be49-2edfee6e4ba9)
+![Uploading image.png…]()
