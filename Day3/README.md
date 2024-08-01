@@ -70,3 +70,104 @@ exit
 ```
 Expected output
 ![image](https://github.com/user-attachments/assets/46f8f685-7f49-427f-a7fb-47f4703b9a6f)
+
+
+## Lab - Creating an external node port service for nginx deployment
+```
+oc delete svc/nginx
+oc expose deploy/nginx --type=NodePort --port=8080
+oc get svc
+oc describe svc/nginx
+oc get nodes -o wide
+curl http://
+```
+
+Expected output
+![image](https://github.com/user-attachments/assets/cfdd2cad-ada1-4260-bd5f-0505a62cc720)
+![image](https://github.com/user-attachments/assets/4611087d-f127-4b62-93a6-947574c59ba3)
+
+## Lab - Creating an external load balancer service for nginx deployment
+```
+oc delete svc/nginx
+oc expose deploy/nginx --type=LoadBalancer --port=8080
+oc get svc
+oc describe svc/nginx
+
+```
+
+Expected output
+![image](https://github.com/user-attachments/assets/694b6ca1-c32e-4909-8867-cad92143a452)
+
+
+## Lab - Declarative create nginx deployment
+```
+oc delete project/jegan
+oc new-project jegan
+
+oc create deploy nginx --image=bitnami/nginx:latest --replicas=3 --dry-run=client -o yaml
+oc create deploy nginx --image=bitnami/nginx:latest --replicas=3 --dry-run=client -o yaml > nginx-deploy.yml
+oc create -f nginx-deploy.yml --save-config
+oc get deploy,rs,po
+```
+
+Expected output
+![image](https://github.com/user-attachments/assets/395f45e6-696f-44e8-9f65-312016a84079)
+
+
+## Lab - Delcaritvely create replicaset without deployment
+
+```
+oc get rs
+oc get rs/nginx-66c775969 -o yaml
+oc get rs/nginx-66c775969 -o yaml > nginx-rs.yml
+```
+Expected output
+![image](https://github.com/user-attachments/assets/0c87d0ba-4a6f-4f31-b3cf-98c7e4d03605)
+![image](https://github.com/user-attachments/assets/862dba02-5789-4782-a7d0-271c2c6653cf)
+
+Let's delete the existing deployment in declarative style
+```
+oc delete -f nginx-deploy.yml
+oc get deploy,rs,po
+```
+Expected output
+
+Now let's create the replicaset in declarative style
+```
+oc create -f nginx-rs.yml --save-config
+oc get rs,po
+```
+Expected output
+![image](https://github.com/user-attachments/assets/b1e1e05c-ed23-435c-be49-2edfee6e4ba9)
+![image](https://github.com/user-attachments/assets/09c19586-d012-4014-af1e-e3c0b9b12930)
+
+## Lab - Creating a pod in declarative style without replicaset and deployment
+```
+cd ~/openshift-hyd-2024
+git pull
+cd Day3/declarative-manifest-scripts
+cat pod.yml
+oc create -f pod.yml --save-config
+oc get po
+oc get po -w
+```
+
+Expected output
+![image](https://github.com/user-attachments/assets/e12f498d-b5fc-4071-92b5-8374340d0a6f)
+![image](https://github.com/user-attachments/assets/3d777a12-15ee-4aa5-9c9b-4350f1506492)
+![image](https://github.com/user-attachments/assets/b1cf8d9c-e790-4879-9a51-d3348c214a51)
+
+## Lab - Declaratively creating a clusterip service
+```
+oc delete -f pod.yml
+oc create -f nginx-deploy.yml --save-config
+oc expose deploy/nginx --type=ClusterIP --port=8080 --dry-run=client -o yaml
+oc expose deploy/nginx --type=ClusterIP --port=8080 --dry-run=client -o yaml > nginx-clusterip-svc.yml
+oc create -f nginx-clusterip-svc.yml
+oc get svc
+oc describe svc/nginx
+```
+
+Expected output
+![image](https://github.com/user-attachments/assets/f91778cf-9346-4f9c-be14-6301c431aec0)
+![image](https://github.com/user-attachments/assets/104d5146-adf8-4231-baa2-357a29bbeabb)

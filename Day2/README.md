@@ -1,9 +1,18 @@
 # Day 2
 
+## Docker High Level Architecture 
+![Docker Architecture](DockerHighLevelArchitecture.png)
+
+## Hypervisor High Level Architecture
+![Hypervisor Architecture](HypervisorHighLevelArchitecture.png)
+
 ## Kubernetes High-Level Architecture
 ![Kubernetes Architecture](KubernetesArchitecture1.png)
 ![Kubernetes Architecture](KubernetesArchitecture2.png)
 
+## OpenShift High-Level Architecture
+![OpenShift Architecture](OpenShiftArchitecture.png)
+![OpenShift Master Node](master-node.png)
 ## What are the Control Plane Compenents in OpenShift/Kubernetes
 1. API Server
 2. etcd key-value datastore/database
