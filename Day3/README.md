@@ -155,4 +155,19 @@ oc get po -w
 Expected output
 ![image](https://github.com/user-attachments/assets/e12f498d-b5fc-4071-92b5-8374340d0a6f)
 ![image](https://github.com/user-attachments/assets/3d777a12-15ee-4aa5-9c9b-4350f1506492)
-![Uploading image.png…]()
+![image](https://github.com/user-attachments/assets/b1cf8d9c-e790-4879-9a51-d3348c214a51)
+
+## Lab - Declaratively creating a clusterip service
+```
+oc delete -f pod.yml
+oc create -f nginx-deploy.yml --save-config
+oc expose deploy/nginx --type=ClusterIP --port=8080 --dry-run=client -o yaml
+oc expose deploy/nginx --type=ClusterIP --port=8080 --dry-run=client -o yaml > nginx-clusterip-svc.yml
+oc create -f nginx-clusterip-svc.yml
+oc get svc
+oc describe svc/nginx
+```
+
+Expected output
+![image](https://github.com/user-attachments/assets/f91778cf-9346-4f9c-be14-6301c431aec0)
+![image](https://github.com/user-attachments/assets/104d5146-adf8-4231-baa2-357a29bbeabb)
