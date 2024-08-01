@@ -70,3 +70,30 @@ exit
 ```
 Expected output
 ![image](https://github.com/user-attachments/assets/46f8f685-7f49-427f-a7fb-47f4703b9a6f)
+
+
+## Lab - Creating an external node port service for nginx deployment
+```
+oc delete svc/nginx
+oc expose deploy/nginx --type=NodePort --port=8080
+oc get svc
+oc describe svc/nginx
+oc get nodes -o wide
+curl http://
+```
+
+Expected output
+![image](https://github.com/user-attachments/assets/cfdd2cad-ada1-4260-bd5f-0505a62cc720)
+![image](https://github.com/user-attachments/assets/4611087d-f127-4b62-93a6-947574c59ba3)
+
+## Lab - Creating an external load balancer service for nginx deployment
+```
+oc delete svc/nginx
+oc expose deploy/nginx --type=LoadBalancer --port=8080
+oc get svc
+oc describe svc/nginx
+
+```
+
+Expected output
+![image](https://github.com/user-attachments/assets/694b6ca1-c32e-4909-8867-cad92143a452)
