@@ -55,3 +55,18 @@ Expected output
 ![image](https://github.com/user-attachments/assets/996c7f6b-b511-4a1e-9ed7-a6cc6e83e084)
 ![image](https://github.com/user-attachments/assets/3ac8b518-ed34-4cf3-a361-a254e335ae48)
 ![image](https://github.com/user-attachments/assets/ef4c51e0-49fc-477e-8593-f136c3a6baf5)
+![image](https://github.com/user-attachments/assets/265a01f8-1248-44ac-a211-f2d31881c388)
+
+Accessing the clusterip service from an test pod
+```
+oc create deploy test --image=tektutor/spring-ms:1.0
+```
+
+Getting inside a test pod shell
+```
+oc rsh deploy/test
+curl http://nginx:8080
+exit
+```
+Expected output
+![image](https://github.com/user-attachments/assets/46f8f685-7f49-427f-a7fb-47f4703b9a6f)
