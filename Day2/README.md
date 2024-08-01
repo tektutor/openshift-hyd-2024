@@ -1,5 +1,9 @@
 # Day 2
 
+## Kubernetes High-Level Architecture
+![Kubernetes Architecture](KubernetesArchitecture1.png)
+![Kubernetes Architecture](KubernetesArchitecture2.png)
+
 ## What are the Control Plane Compenents in OpenShift/Kubernetes
 1. API Server
 2. etcd key-value datastore/database
