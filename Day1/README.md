@@ -284,13 +284,111 @@ docker rmi ubuntu:latest
 ```
 
 ## Lab - Creating a mysql container with external storage
+
+Creating a mysql db server container without external storage
+```
+docker run -d --name mysql --hostname mysql -e MYSQL_ROOT_PASSWORD=root@123 mysql:latest
+docker ps
+docker exec -it mysql sh
+mysql -u root -p
+SHOW DATABASES;
+CREATE DATABASE tektutor;
+USE tektutor;
+SHOW TABLES;
+CREATE TABLE training ( id INT NOT NULL, name VARCHAR(250) NOT NULL, duration VARCHAR(250) NOT NULL, PRIMARY KEY(id) );
+DESCRIBE TABLE training;
+
+INSERT INTO training VALUES ( 1, "DevOps", "5 Days" );
+INSERT INTO training VALUES ( 2, "Developing Microservices with SpringBoot", "5 Days" );
+SELECT * FROM training;
+
+exit
+exit
+```
+
+Expected output
+![image](https://github.com/user-attachments/assets/3b146364-d806-4dca-847c-a0695de6e8af)
+![image](https://github.com/user-attachments/assets/ea2a1946-3c2b-4f2e-8eda-5aef96b9c5d8)
+![image](https://github.com/user-attachments/assets/e3c1be3d-acf6-4323-af8b-1c4c1c255521)
+![image](https://github.com/user-attachments/assets/d7d403b2-4d61-4abb-802c-91443aff4ad5)
+![image](https://github.com/user-attachments/assets/3465cfc0-8850-4309-a212-01889f89b9ba)
+
+
+
 Assuming you are logging in to the linux box as user01, you need to create a folder under your home directory.  You need to modify the username as per your linux username in the below commands.
 
 ```
 mkdir -p /home/user01/mysql
-docker run -d --name mysql --hostname mysql -v/home/user01/mysql:/var/lib/mysql mysql:latest
+docker run -d --name mysql --hostname mysql -v/home/jegan/mysql:/var/lib/mysql mysql:latest
 docker ps
+docker logs mysql
 ```
+Expected output
+![image](https://github.com/user-attachments/assets/ebf2014f-cc52-417f-98ac-3d8bf24045f9)
+
+
+It is mandatory to supply MYSQL_ROOT_PASSWORD password environment variable while creating mysql container.
+```
+docker rm -f mysql
+docker run -d --name mysql --hostname mysql -v/home/jegan/mysql:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=root@123 mysql:latest
+docker ps
+docker logs mysql
+```
+Expected output
+![image](https://github.com/user-attachments/assets/2cde5b91-e00d-4c4b-b362-e17b16cccf57)
+![image](https://github.com/user-attachments/assets/2bbda409-ac77-448e-b31f-e5cecc04b639)
+
+Let's get inside container shell
+```
+docker exec -it mysql /bin/sh
+mysql -u root -p
+SHOW DATABASES;
+CREATE DATABASE tektutor;
+USE tektutor;
+SHOW TABLES;
+CREATE TABLE training ( id INT NOT NULL, name VARCHAR(250) NOT NULL, duration VARCHAR(250) NOT NULL, PRIMARY KEY(id) );
+DESCRIBE TABLE training;
+
+INSERT INTO training VALUES ( 1, "DevOps", "5 Days" );
+INSERT INTO training VALUES ( 2, "Developing Microservices with SpringBoot", "5 Days" );
+SELECT * FROM training;
+
+exit
+exit
+```
+
+Expected output
+![image](https://github.com/user-attachments/assets/5185d06b-62b8-4245-b5cd-01a2764e8764)
+![image](https://github.com/user-attachments/assets/70e2e8af-1fbb-4cd6-9aa5-b0d99f580359)
+![image](https://github.com/user-attachments/assets/fe3bb473-6f7e-4eab-bd48-1fa96c1e5ff2)
+![image](https://github.com/user-attachments/assets/5fc62726-7a37-429a-8c56-270082a52cfe)
+
+
+Now delete the existing mysql container
+```
+docker rm -f mysql
+```
+
+Recreate a new container mounting the same local machine path
+```
+docker run -d --name mysql --hostname mysql -e MYSQL_ROOT_PASSWORD=root@123 -v /home/jegan/mysql:/var/lib/mysql mysql:latest
+docker ps
+docker exec -it mysql /bin/sh
+
+mysql -u root -p
+SHOW DATABASES;
+USE tektutor;
+SHOW TABLES;
+SELECT * FROM training;
+
+exit
+exit
+```
+Expected output
+![image](https://github.com/user-attachments/assets/39fefb98-deb9-4cbb-977e-0fff65e8042c)
+![image](https://github.com/user-attachments/assets/a3686ac9-17de-4414-99b4-191978a16595)
+![image](https://github.com/user-attachments/assets/60d5dd81-4b1f-47d7-8a51-d87fe6d7bf4c)
+
 
 ## Lab - Building custom docker image
 ```
@@ -308,3 +406,43 @@ Expected output
 ![image](https://github.com/user-attachments/assets/c8ac6b6b-3ff8-47b8-8c62-dd287f1b8daf)
 ![image](https://github.com/user-attachments/assets/4f847085-6802-41a8-a344-877d92ccbde6)
 ![image](https://github.com/user-attachments/assets/4c904840-aab5-4807-b4ee-ecfc25ff52c1)
+
+## Lab - Building a multi-stage docker image
+```
+cd ~/openshift-hyd-2024
+git pull
+cd Day1/spring-ms
+cat Dockerfile
+tree
+docker build -t tektutor/spring-ms:latest .
+docker images
+```
+
+Expected output
+![image](https://github.com/user-attachments/assets/8adfeb55-893b-48e6-9a2a-c2fe7351bcac)
+![image](https://github.com/user-attachments/assets/6f822e10-ba49-4d2a-a0f5-28802b1b8b0c)
+![image](https://github.com/user-attachments/assets/3e7a6b8a-45ce-4ddf-9ca9-092278968c7a)
+![image](https://github.com/user-attachments/assets/bd969633-5c65-4ec9-b4c6-e88cf3876a37)
+
+Creating a container with our custom docker image
+```
+docker rm -f c1
+docker run -d --name c1 --hostname c1 tektutor/spring-ms:latest
+docker ps
+docker inspect c1 | grep IPA
+curl http://172.17.0.2:8080
+```
+Expected output
+
+![image](https://github.com/user-attachments/assets/5b13d935-1355-4de2-a776-886f2a9e7bcc)
+
+
+## Lab - Renaming a container
+```
+docker ps
+docker rename c1 my-container
+docker ps
+```
+
+Expected output
+![image](https://github.com/user-attachments/assets/bda78c15-2f22-44da-86e4-65a5f0f36928)
