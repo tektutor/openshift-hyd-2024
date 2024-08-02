@@ -40,4 +40,7 @@ oc get route
 ```
 
 Expected output
+![image](https://github.com/user-attachments/assets/8a7470fa-5b9a-4624-9882-02176ea596b6)
+![image](https://github.com/user-attachments/assets/77c1c665-912b-4839-b858-e0ca4c73ece5)
+![image](https://github.com/user-attachments/assets/d2441856-53fb-4553-81b6-f7baecaa848a)
 ![image](https://github.com/user-attachments/assets/15516aef-c899-4201-9f39-e4381e8dc7ff)
