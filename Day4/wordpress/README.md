@@ -23,3 +23,21 @@
   - storage class 
 - when your application request for external storage via PVC, openshift cluster should have a matching PV, if not your application Pod will be in Pending state
 </pre>
+
+## Lab - Deploying nginx using new-app command
+```
+oc delete project/jegan
+oc new-project jegan
+oc new-app nginx --image=bitnami/nginx:latest
+oc status
+```
+
+Creating a route to expose your application to external access with a public dns url
+```
+oc get svc
+oc expose svc/nginx
+oc get route
+```
+
+Expected output
+![image](https://github.com/user-attachments/assets/15516aef-c899-4201-9f39-e4381e8dc7ff)
